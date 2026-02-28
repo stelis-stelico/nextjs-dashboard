@@ -4,15 +4,15 @@ const users = [
   {
     id: '410544b2-4001-4271-9855-fec4b6a6442a',
     name: 'User',
-    email: 'user@nextmail.com',
-    password: '123456',
+    email: 'stelico@nextmail.com',
+    password: 'stelmanstelico',
   },
 ];
 
 const customers = [
   {
     id: 'd6e15727-9fe1-4961-8c5b-ea44a9bd81aa',
-    name: 'Evil Rabbit',
+    name: 'Evil Rabbits',
     email: 'evil@rabbit.com',
     image_url: '/customers/evil-rabbit.png',
   },
