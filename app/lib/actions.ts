@@ -135,7 +135,7 @@ export async function createCustomer(formData: FormData) {
 
   await sql`
     INSERT INTO customers (id, name, email, image_url)
-    // VALUES (${randomUUID()}, ${name}, ${email}, ${image_url})
+     VALUES (${randomUUID()}, ${name}, ${email}, ${image_url})
   `;
 
   revalidatePath('/dashboard/customers');
