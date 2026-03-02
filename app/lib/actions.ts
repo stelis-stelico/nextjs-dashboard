@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import postgres from 'postgres';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
+import { randomUUID } from 'crypto';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
  
@@ -123,4 +124,20 @@ export async function authenticate(
     }
     throw error;
   }
+}
+
+export async function createCustomer(formData: FormData) {
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  const image_url =
+    (formData.get('image_url') as string) ||
+    'https://i.pravatar.cc/150?img=3';
+
+  await sql`
+    INSERT INTO customers (id, name, email, image_url)
+    // VALUES (${randomUUID()}, ${name}, ${email}, ${image_url})
+  `;
+
+  revalidatePath('/dashboard/customers');
+  redirect('/dashboard/customers');
 }
